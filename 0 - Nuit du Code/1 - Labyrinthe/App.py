@@ -1,3 +1,4 @@
+import pyxel
 from Personnage import *
 from Labyrinthe import *
 BLOC = 8
