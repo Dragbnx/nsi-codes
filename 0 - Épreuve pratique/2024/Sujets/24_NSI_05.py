@@ -1,36 +1,57 @@
-def est_un_ordre(tab):
+def max_et_indice(tab):
+    if tab==[]:
+        return None
+
+    max_element = tab[0]  
+    max_indice = 0          
+
+    for i in range(1, len(tab)):
+        if tab[i] > max_element:
+            max_element = tab[i] 
+            max_indice = i          
+
+    return max_element, max_index
+
+
+
+
+
+
+
+    def est_un_ordre(tab):
     '''
     Renvoie True si tab est de longueur n et contient tous les
     entiers de 1 à n, False sinon
     '''
     n = len(tab)
-    # les entiers vus lors du parcours
-    vus = ... 
-
-    for x in tab:
-        if x < ... or x >... or ...: 
+    vus = [False] * n
+    for v in tab:
+        if v < 1 or v > n or vus[v-1]:
             return False
-        ... .append(...) 
+        vus[v-1] = True
     return True
+
 
 def nombre_points_rupture(ordre):
     '''
-    Renvoie le nombre de point de rupture de ordre qui représente 
-    un ordre de gènes de chromosome
+    Renvoie le nombre de points de rupture de ordre qui représente 
+    un ordre de gènes de chromosome.
     '''
-    # on vérifie que ordre est un ordre de gènes
-    assert ... 
+    # Vérification que ordre est un ordre de gènes
+    assert est_un_ordre(ordre)
+    
     n = len(ordre)
     nb = 0
-    if ordre[...] != 1: # le premier n'est pas 1 
-        nb = nb + 1
+    if ordre[0] != 1:
+        nb += 1
     i = 0
-    while i < ...: 
-        if ... not in [-1, 1]: # l'écart n'est pas 1 
-            nb = nb + 1
-        i = i + 1
-    if ordre[i] != ...: # le dernier n'est pas n 
-        nb = nb + 1
+    while i < n - 1: 
+        diff = ordre[i] - ordre[i+1]  
+        if diff != 1 and diff != -1: 
+            nb += 1
+        i += 1
+    if ordre[-1] != n: 
+        nb += 1
     return nb
 
 

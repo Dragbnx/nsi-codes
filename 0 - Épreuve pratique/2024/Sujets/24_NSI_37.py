@@ -1,15 +1,21 @@
+def moyenne(tab):
+    if len(tab) == 0:
+        return 0
+    total = 0
+    for num in tab:
+        total += num
+    return total/len(tab)
+
+
 def tri(tab):
-    '''tab est un tableau d'entiers contenant des 0 et des 1.
-    La fonction trie ce tableau en plaçant tous les 0 à gauche'''
-    i = ... # premier indice de la zone non triée 
-    j = ... # dernier indice de la zone non triée 
-    while i < j:
-        if tab[i] == 0:
-            i = ... 
+    i = 0
+    j = len(tab) - 1
+    while i <= j :
+        if tab[i]==0:
+            i += 1
         else:
-            valeur = ... 
-            tab[j] = ... 
-            ...
-            j = ... 
-
-
+            valeur = tab[j]
+            tab[j] = tab[i]
+            tab[i]= valeur
+            j -=1
+David

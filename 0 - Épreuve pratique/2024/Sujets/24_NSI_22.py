@@ -1,3 +1,14 @@
+def recherches_indices_classement(elt, tab):
+    moins, egal, sup = [], [], []
+    for i in range(len(tab)):
+        if tab[i] == elt:
+            egal.append(i)
+        elif tab[i] < elt:
+            moins.append(i)
+        else:
+            sup.append(i)
+    return moins, egal, sup
+
 resultats = {
     'Dupont': {
         'DS1': [15.5, 4],
@@ -19,17 +30,17 @@ def moyenne(nom, resultats):
     '''Renvoie la moyenne de l'élève nom, selon le dictionnaire 
     resultats. Si nom n'est pas dans le dictionnaire, 
     la fonction renvoie None.'''
-    if nom in ...: 
+    if nom in resultats:
         notes = resultats[nom]
-        if ...: # pas de notes 
+        if not notes:
             return 0
-        total_points = ... 
-        total_coefficients = ... 
-        for ...  in notes.values(): 
+        total_points = 0
+        total_coefficients = 0
+        for valeurs in notes.values():
             note, coefficient = valeurs
-            total_points = total_points + ... * coefficient 
-            ... = ... + coefficient 
-        return round( ... / total_coefficients, 1 ) 
+            total_points += note * coefficient
+            total_coefficients += coefficient
+        return round(total_points / total_coefficients, 1)
     else:
         return None
 

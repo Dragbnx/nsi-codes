@@ -1,3 +1,20 @@
+def ou_exclusif(tab1, tab2):
+    """
+    Renvoie un tableau où chaque élément est le résultat de l'opérateur
+    "ou exclusif" entre les éléments correspondants des deux tableaux passés en paramètres.
+    """
+    if len(tab1) != len(tab2):
+        return "Les tableaux n'ont pas la même longueur."
+
+    resultat = []
+
+    for i in range(len(tab1)):
+        resultat.append(tab1[i] ^ tab2[i])
+
+    return resultat
+
+
+
 class Carre:
     def __init__(self, liste, n): 
         self.ordre = n        
@@ -27,17 +44,25 @@ class Carre:
                                    
                                    
     def est_semimagique(self): 
-        s = self.somme_ligne(0) 
-        #test de la somme de chaque ligne 
-        for i in range(...): 
-            if ... != s: 
-                return ... 
-                                   
-        #test de la somme de chaque colonne 
-        for j in range(...): 
-            if ... != s: 
-                return ... 
-                                   
-        return ... 
+        s = self.somme_ligne(0)
+        for i in range(1, self.ordre):
+            if self.somme_ligne(i) != s:
+                return False
+        for j in range(self.ordre):
+            if self.somme_col(j) != s:
+                return False
+        return True
+
+
+lst_c2 = [2, 7, 6, 9]
+c2 = Carre(lst_c2, 2)
+
+lst_c3 = [3, 4, 5, 4, 4, 4, 5, 4, 3]
+c3 = Carre(lst_c3, 3)
+
+
+
+print(c2.est_semimagique())    
+print(c3.est_semimagique())    
 
 

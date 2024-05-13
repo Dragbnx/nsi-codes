@@ -1,3 +1,15 @@
+# Sujet n°33
+# Exercice 1
+
+def renverse(mot):
+    inverse = ""
+    for c in mot:
+        inverse = c + inverse
+    return inverse
+    
+
+# Exercice 2
+
 def crible(n):
     """Renvoie un tableau contenant tous les nombres premiers
     plus petits que n."""
@@ -6,11 +18,11 @@ def crible(n):
     tab[0], tab[1] = False, False
     for i in range(n):
         if tab[i]:
-            premiers.... 
-            multiple = ... 
+            premiers += [i]
+            multiple  = i + i
             while multiple < n:
-                tab[multiple] = ... 
-                multiple = ... 
+                tab[multiple] = False
+                multiple = multiple + i
     return premiers
-
+    
 
