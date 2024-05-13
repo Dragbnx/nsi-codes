@@ -28,7 +28,7 @@ class Labyrinthe:
         """ Labyrinthe, (int, int) -> bool
         Détermine si bloc est un indice de bloc valide correspondant à un sol dans le labyrinthe self """
         x,y = bloc
-        return self.murs[x][y] == 1
+        return self.murs[x][y] != 0
     
     def blocs_possibles(self, position, visites):
         """ Labyrinthe, (int, int), {(int, int)} -> [(int, int)]
@@ -42,14 +42,14 @@ class Labyrinthe:
         return paul_liste
 
     
-    def generer(self):
+    def generer(self, couleur = 1):
         """ Labyrinthe
         Génère un labyrinthe de manière aléatoire """
         n, m = self.dim
         for i in range(n):
             for j in range(m):
                 if i%2 == 1 and j%2 == 1:
-                    self.murs[i][j] = 1
+                    self.murs[i][j] = couleur
         visites = set()
         chemin = []
         position_courantes = (1,1)
@@ -65,7 +65,7 @@ class Labyrinthe:
             nouvelle_position = random.choice(choix)
             x, y = position_courantes
             x1, y1 = nouvelle_position
-            self.murs[(x+x1)//2][(y+y1)//2] = 1
+            self.murs[(x+x1)//2][(y+y1)//2] = couleur
             position_courantes = nouvelle_position
             visites.add(position_courantes)
             chemin.append(position_courantes)
@@ -76,6 +76,6 @@ class Labyrinthe:
         n,m = self.dim
         for i in range(n):
             for j in range(m):
-                pyxel.rect(i*8, j*8, 8,8,self.murs[i][j])
+                pyxel.rect(i*8, j*8, 8, 8, self.murs[i][j])
 
 Labyrinthe(15,15)
