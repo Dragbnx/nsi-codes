@@ -18,7 +18,7 @@ class App:
                           pyxel.KEY_DOWN: BAS,
                           };
         self.lab = Labyrinthe(51,51)
-        pyxel.init(408, 408, title="La Nuit du Code", fps = 60)
+        pyxel.init(408, 408, title="La Nuit du Code")
         pyxel.run(self.update, self.draw)
 
     def exec_btn(self):
@@ -45,8 +45,8 @@ class App:
         x, y = direction
         x, y = x//8, y//8
         if self.lab.est_sol((x+xp,y+yp)):
-            self.hero.x += x
-            self.hero.y += y
+            self.hero.x += x*8
+            self.hero.y += y*8
 
 
 
