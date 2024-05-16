@@ -20,11 +20,6 @@ print(nombre_de_mots('Combien de mots y a t il dans cette phrase ?'))
 print(nombre_de_mots('Fin.'))
 
 
-
-
-
-
-
 # EXERCICE 2
 
 class Noeud:

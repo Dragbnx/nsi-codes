@@ -1,3 +1,4 @@
+# Exercice 1
 def recherches_indices_classement(elt, tab):
     moins, egal, sup = [], [], []
     for i in range(len(tab)):
@@ -9,6 +10,8 @@ def recherches_indices_classement(elt, tab):
             sup.append(i)
     return moins, egal, sup
 
+
+# Exercice 2
 resultats = {
     'Dupont': {
         'DS1': [15.5, 4],

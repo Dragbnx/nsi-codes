@@ -21,7 +21,7 @@ class Expr:
         s = self.valeur 
         if self.gauche is not None:
             s = '(' + s + self.infixe(self.gauche) 
-        s = s + ... 
+        s = s + ... # à compléter
         if self.droite is not None: 
             s = s + self.infixe(self.droite) + ')'
         return s

@@ -1,6 +1,7 @@
-#maximilien ILIC
+# maximilien ILIC
 from random import randint
 
+# Exercice 1
 def tri_selection(tab):
     n = len(tab)
     for i in range(n):
@@ -12,6 +13,7 @@ def tri_selection(tab):
     return tab
 
 
+# Exercice 2
 def plus_ou_moins():
     nb_mystere = randint(1,99)
     nb_test = int(input("Proposez un nombre entre 1 et 99 : "))

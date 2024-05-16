@@ -15,6 +15,7 @@ def separe(tab):
         if tab[gauche] == 0 :
             gauche = gauche + 1 
         else :
+            # les deux lignes suivantes sont incorrectes
             tab[gauche] = tab[droite]
             tab[droite] = tab[gauche]
             droite = droite - 1

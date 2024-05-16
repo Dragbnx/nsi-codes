@@ -1,3 +1,4 @@
+# Exercice 1
 def effectif_notes(notes):
     eff = [0 for i in range(11)]
     for elm in notes:
@@ -11,6 +12,7 @@ def note_triee(eff):
             tab.append(i)
     return tab
 
+# Exercice 2
 def dec_to_bin(nb_dec):
     q, r = nb_dec // 2, nb_dec % 2
     if q == 0:

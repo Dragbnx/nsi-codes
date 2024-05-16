@@ -18,4 +18,3 @@ def tri(tab):
             tab[j] = tab[i]
             tab[i]= valeur
             j -=1
-David

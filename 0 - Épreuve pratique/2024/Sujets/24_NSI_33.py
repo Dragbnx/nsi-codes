@@ -9,7 +9,6 @@ def renverse(mot):
     
 
 # Exercice 2
-
 def crible(n):
     """Renvoie un tableau contenant tous les nombres premiers
     plus petits que n."""

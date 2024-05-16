@@ -1,6 +1,8 @@
 def max_et_indice(tab):
-    if tab==[]:
-        return None
+    # Bien de faire attention mais il est précisé dans le sujet
+    # "un tableau non vide tab"
+    # if tab==[]:
+    #     return None
 
     max_element = tab[0]  
     max_indice = 0          
@@ -12,13 +14,7 @@ def max_et_indice(tab):
 
     return max_element, max_index
 
-
-
-
-
-
-
-    def est_un_ordre(tab):
+def est_un_ordre(tab):
     '''
     Renvoie True si tab est de longueur n et contient tous les
     entiers de 1 à n, False sinon
@@ -45,9 +41,12 @@ def nombre_points_rupture(ordre):
     if ordre[0] != 1:
         nb += 1
     i = 0
+    # une boucle for suffit... mais c'est le sujet qui indique une boucle
+    # while... alors on utilise une boucle while... :@
     while i < n - 1: 
-        diff = ordre[i] - ordre[i+1]  
-        if diff != 1 and diff != -1: 
+        # diff = ordre[i] - ordre[i+1]  
+        # if diff != 1 and diff != -1: 
+        if ordre[i] - ordre[i+1] not in {-1, 1}:
             nb += 1
         i += 1
     if ordre[-1] != n: 

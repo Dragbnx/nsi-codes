@@ -1,3 +1,4 @@
+# attention, ecriture_binaire_entier_positif(0) soulève une erreur
 def ecriture_binaire_entier_positif(dec):
     """ int -> bin
         passe un decimal en binaire 
@@ -14,8 +15,6 @@ binaire = [elm for elm in binaire]
     binaire = [binaire[(len(binaire)-1) - i ] for i in range(len(binaire))]
     binaire = "".join(binaire)
 """
-
-
 
 
 def echange(tab, i, j):

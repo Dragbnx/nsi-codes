@@ -44,6 +44,7 @@ class Carre:
                                    
                                    
     def est_semimagique(self): 
+        # attention au cas où le carré est vide
         s = self.somme_ligne(0)
         for i in range(1, self.ordre):
             if self.somme_ligne(i) != s:

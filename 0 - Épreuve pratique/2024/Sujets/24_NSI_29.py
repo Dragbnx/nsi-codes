@@ -1,13 +1,17 @@
 #maximilien ILIC
+# Exercice 1
 def moyennes(n):
+    # préférer : def moyennes(notes):
     denominateur = 0
     numerateur = 0
     for i in range(len(n)):
+        # préférer :
+        # note, coeff = n[i]
         denominateur += n[i][1]
         numerateur += n[i][0] * n[i][1]
     return numerateur/denominateur
 
-
+# Exercice 2
 def ligne_suivante(ligne):
     '''Renvoie la ligne suivant ligne du triangle de Pascal'''
     ligne_suiv = [1] 

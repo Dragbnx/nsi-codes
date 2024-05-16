@@ -2,7 +2,9 @@
 # Exercice 1
 
 def correspond(mot, mot_a_trous):
-    return len(mot) == len(mot_a_trous)
+    # non, c'est plus compliqué que cela
+    # return len(mot) == len(mot_a_trous)
+    pass
 
 # Exercice 2
 
@@ -12,6 +14,7 @@ def est_cyclique(plan):
     D, E, F).
     Renvoie True si le plan d'envoi de messages est cyclique et
     False sinon.'''
+    # on suppose que le plan d'envoi n'est pas vide
     expediteur = 'A'
     destinataire = plan[expediteur]
     nb_destinataires = 1
