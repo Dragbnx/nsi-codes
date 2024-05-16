@@ -7,10 +7,11 @@ HAUT, BAS, GAUCHE, DROITE = (0, -BLOC), (0, BLOC), (-BLOC, 0), (BLOC, 0)
 class Personnage:
     """Un personnage dans le labyrinthe"""
 
-    def __init__(self, x=0, y=0):
+    def __init__(self, couleur, x=0, y=0):
         """ Personnage -> None """
         self.x = x
         self.y = y
+        self.couleur = couleur
     def deplacer(self, direction):
         """ Personnage, (int, int) -> None
         Met à jour la position du personnage après un
@@ -31,7 +32,7 @@ class Personnage:
     def droite(self):
         self.deplacer(DROITE)
 
-    def afficher(self, couleur=5):
+    def afficher(self, ):
         """ Personnage -> None
         Affiche le personnage à l'écran """
-        pyxel.rect(self.x, self.y, 8, 8, couleur)
+        pyxel.rect(self.x, self.y, 8, 8, self.couleur)
