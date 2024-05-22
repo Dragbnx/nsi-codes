@@ -9,7 +9,9 @@ class App:
     def __init__(self):
         """App -> None"""
         pyxel.init(128, 128, fps = 10, title="La Nuit du Code")
+        pyxel.load("1.pyxres")
         self.heros = Personnage(8, 8)
+        self.win = False
         self.lab = Labyrinthe(15, 15)
         # # commandes[touche] = action
         # self.commandes = {
@@ -30,6 +32,7 @@ class App:
         """ App -> None
         Met à jour l'application """
         self.exec_btn()
+        
     
     def draw(self):
         """ App -> None
@@ -37,6 +40,8 @@ class App:
         pyxel.cls(0)
         self.lab.afficher()
         self.heros.afficher()
+        if self.win:
+            pyxel.text(50, 50, "YOU WIN", 0)
 
     def exec_btn(self):
         """ App -> None
@@ -56,6 +61,8 @@ class App:
         i, j = (perso.x + dx)//BLOC, (perso.y + dy)//BLOC
         if self.lab.est_sol((i, j)):
             perso.deplacer(direction)
+        if self.lab.est_fin((i, j)):
+            self.win = True
 
 class Personnage:
     """Un personnage dans le labyrinthe"""
@@ -63,6 +70,7 @@ class Personnage:
         """Personnage -> None"""
         self.x = x
         self.y = y
+        self.textures = [(i, 16) for i in range(0, 24, 8)]
 
     def deplacer(self, direction):
         """ Personnage, (int, int) -> None
@@ -75,7 +83,15 @@ class Personnage:
     def afficher(self, couleur=5):
         """ Personnage -> None
         Affiche le personnage à l'écran """
-        pyxel.rect(self.x, self.y, BLOC, BLOC, couleur)
+        # Comment faire pour :
+        # Ralentir l'animation ?
+        # Accélerer l'animation ?
+        # Changer le personnage : oiseau -> blob vert
+        # "Intégrer" le personnage au labyrinthe
+        # (la couleur violette doit apparaître comme transparente)
+        u, v = self.textures[pyxel.frame_count%len(self.textures)]
+        pyxel.blt(self.x, self.y, 0, u, v, BLOC, BLOC)
+        # pyxel.rect( BLOC, BLOC, couleur)
     
     def haut(self): self.deplacer(HAUT)
     def bas(self): self.deplacer(BAS)
@@ -91,11 +107,13 @@ class Labyrinthe:
         self.dim = n, m
         self.murs = [[0 for j in range(m)]
                     for i in range(n)]
+        self.sortie = (13, 13)
         self.textures = {
-            0: (BLOC, BLOC, 11),
-            1: (BLOC, BLOC, 2)
+            0: (0, 40),
+            1: (40, 0)
         }
-        self.murs = self.creer_lab_fusion(n, m)
+        self.generer()
+        # self.murs = self.creer_lab_fusion(n, m)
 
     def est_dans(self, position):
         """ Labyrinthe, (int, int) -> bool
@@ -109,6 +127,9 @@ class Labyrinthe:
         Détermine si position est un indice de bloc valide pour le labyrinthe self """
         i, j = position
         return self.est_dans(position) and self.murs[i][j] == 0
+
+    def est_fin(self, position):
+        return position == self.sortie
     
     def blocs_possibles(self, position, visites):
         """ Labyrinthe, (int, int), {(int, int)} -> [(int, int)]
@@ -123,7 +144,7 @@ class Labyrinthe:
         return voisins
     
     def generer(self):
-        """ Labyrinthe
+        """ Labyrinthe -> None
         Génère un labyrinthe de manière aléatoire """
         n, m = self.dim
         # Initialement tous les murs sont fermés
@@ -196,7 +217,9 @@ class Labyrinthe:
         n, m = self.dim
         for i in range(0, n):
             for j in range(0, m):
-                h, w, col = self.textures[self.murs[i][j]]
-                pyxel.rect(i*BLOC, j*BLOC, h, w, col)
+                u, v = self.textures[self.murs[i][j]]
+                # Comment faire pour changer le thème ?
+                pyxel.blt(i*BLOC, j*BLOC, 0, u, v, BLOC, BLOC)
+                # pyxel.rect(i*BLOC, j*BLOC, h, w, col)
 
 App()
