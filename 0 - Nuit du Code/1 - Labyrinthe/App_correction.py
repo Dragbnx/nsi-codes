@@ -1,3 +1,9 @@
+# Ce code doit être exécuté avec la commande
+# pyxel run App_correction.py
+# si la libraire pyxel est installée avec pipx
+# ou bien
+# python App_correction
+# si la libraire pyxel est installée avec pip
 import pyxel
 import random
 
