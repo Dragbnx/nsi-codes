@@ -106,8 +106,7 @@ def indice_lettre(c):
     Renvoie l'indice dans l'alphabet de la lettre capitale c. """
     return ord(c) - ord('A')
 
-cle = [indice_lettre(c) for c in "NSI"]
-print(cle)
+
 
 
 
@@ -145,16 +144,3 @@ def chiffre_vigenere(clair, cle):
 # peut pas
 # - chiffrer un message
 # - déchiffrer le message
-
-
-
-
-
-
-
-
-
-
-cle = [indices_lettres(c) for c in 'NSI']
-print(cle)
-print(chiffre_vigenere("TENEZ BON", cle))

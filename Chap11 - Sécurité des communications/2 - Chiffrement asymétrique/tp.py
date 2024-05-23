@@ -3,22 +3,46 @@ import random
 def nombres_premiers(n):
     """ int -> [int]
     Renvoie la liste des nombres premiers inférieurs ou égaux à n """
-    pass
+    if n <= 1:
+        return []
+    l = [True]*(n+1)
+    l[0], l[1] = False, False
+    for i in range(2, n):
+        if not l[i]:
+            continue
+        for j in range(2*i, n+1, i):
+            l[j] = False
+    rep = [i for i in range(len(l)) if l[i]]
+    return rep
 
 def diviseurs_premiers(n):
     """ int -> {int}
     Renvoie l'ensemble des diviseurs de n """
-    pass
+    diviseurs_poss = nombres_premiers(n)
+    divisieurs_premiers = set()
+    for elm in diviseurs_poss:
+        if n%elm == 0:
+            divisieurs_premiers.add(elm)
+    return divisieurs_premiers
+
 
 def premiers_entre_eux(a, b):
     """ int, int -> bool
     Renvoie True si et seulement si a et b sont premiers entre eux """
-    pass
+    diviseur_a = diviseurs_premiers(a)
+    diviseur_b = diviseurs_premiers(b)
+    for elm in diviseur_a:
+        if elm in diviseur_b:
+            return False
+    return True
+
 
 def inverse_modulo(n, a):
     """ int, int -> int
     Renvoie (si possible) l'inverse de a modulo n """
-    pass
+    for i in range(n)
+        if (a*i%n) == 1:
+            return i
 
 def decompose(n):
     """ int -> {int:int}
